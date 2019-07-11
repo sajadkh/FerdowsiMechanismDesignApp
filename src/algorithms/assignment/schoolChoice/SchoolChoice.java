@@ -15,11 +15,11 @@ public class SchoolChoice {
         }
         for(int i=0; i<students.length; i++){
             List<School> stSchools = new ArrayList<School>();
+            int index = -1;
             for(int j=0; j<studentsPreference[i].length; j++){
-                int index = -1;
                 for(int k=0; k<this.schools.size(); k++){
-                    if(this.schools.get(k).getName() == studentsPreference[i][j]){
-                        index = i;
+                    if(this.schools.get(k).getName().equals(studentsPreference[i][j])){
+                        index = k;
                     }
                 }
                 stSchools.add(this.schools.get(index));
@@ -28,7 +28,7 @@ public class SchoolChoice {
         }
     }
 
-    public List<List<String>> AI() {
+    public List<List<String>> IA() {
         boolean sw = true;
 
         while (sw) {
@@ -41,7 +41,7 @@ public class SchoolChoice {
             }
             if (sw) {
                 for (School school : this.schools) {
-                    school.AIPropose();
+                    school.IAPropose();
                 }
             }
         }

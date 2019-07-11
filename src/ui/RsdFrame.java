@@ -3,51 +3,31 @@ package ui;
 
 import algorithms.assignment.ps.PsAlgorithm;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import java.awt.FlowLayout;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.AbstractAction;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 //import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
-public class AppFrame extends JFrame{
+public class RsdFrame extends JFrame{
 
     private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
-    
+    private static final int HEIGHT = 1000;
+
     private JTextArea preferenceMatrixInputTx;
     private JLabel preferenceMatrixInputLb;
     private JTextArea initialAssignmentMatrixInputTx;
     private JLabel initialAssignmentMatrixInputLb;
-    
+    private JTextArea initialSchoolListInputTx;
+    private JLabel initialSchoolListInputLb;
+
     private JTextArea resultTx;
-    private JScrollPane resultPane;   
+    private JScrollPane resultPane;
     private JButton startBtn;
-    
+
     private JRadioButton psRbtn;
     private JRadioButton iaRbtn;
     private JRadioButton daRbtn;
@@ -55,8 +35,8 @@ public class AppFrame extends JFrame{
     private JRadioButton sdRbtn;
     private JRadioButton rsdRbtn;
 
-    
-    public AppFrame(){
+
+    public RsdFrame(){
         initial();
         setListeners();
     }    
@@ -82,38 +62,6 @@ public class AppFrame extends JFrame{
         initialAssignmentMatrixInputTx = new JTextArea();
         initialAssignmentMatrixInputTx.setSize(760,30);
         initialAssignmentMatrixInputTx.setLocation(10,120);
-        
-        psRbtn = new JRadioButton("PS");
-        psRbtn.setSize(50, 20);
-        psRbtn.setLocation(10, 170);
-        psRbtn.setSelected(true);
-        
-        iaRbtn = new JRadioButton("IA");
-        iaRbtn.setSize(50, 20);
-        iaRbtn.setLocation(60, 170);
-        
-        daRbtn = new JRadioButton("DA");
-        daRbtn.setSize(50, 20);
-        daRbtn.setLocation(110, 170);
-        
-        ttcRbtn = new JRadioButton("TTC");
-        ttcRbtn.setSize(50, 20);
-        ttcRbtn.setLocation(160, 170);
-        
-        sdRbtn = new JRadioButton("SD");
-        sdRbtn.setSize(50, 20);
-        sdRbtn.setLocation(210, 170);
-        
-        rsdRbtn = new JRadioButton("RSD");
-        rsdRbtn.setSize(50, 20);
-        rsdRbtn.setLocation(260, 170);
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(psRbtn);
-        buttonGroup.add(iaRbtn);
-        buttonGroup.add(daRbtn);
-        buttonGroup.add(ttcRbtn);
-        buttonGroup.add(sdRbtn);
-        buttonGroup.add(rsdRbtn);
            
         resultTx= new JTextArea();
         resultPane = new JScrollPane (resultTx,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -130,12 +78,6 @@ public class AppFrame extends JFrame{
         add(initialAssignmentMatrixInputLb);
         add(resultPane);
         add(startBtn);
-        add(psRbtn);
-        add(iaRbtn);
-        add(daRbtn);
-        add(ttcRbtn);
-        add(sdRbtn);
-        add(rsdRbtn);
 
     }
     
@@ -163,6 +105,15 @@ public class AppFrame extends JFrame{
             	
             	if(iaRbtn.isSelected()) {
             		appendResult("\nnull\n");
+                    initialSchoolListInputLb = new JLabel("schools");
+                    initialSchoolListInputLb.setSize(300, 20);
+                    initialSchoolListInputLb.setLocation(10,90);
+
+                    initialSchoolListInputTx = new JTextArea();
+                    initialSchoolListInputTx.setSize(760,30);
+                    initialSchoolListInputTx.setLocation(10,120);
+                    add(initialSchoolListInputTx);
+                    add(initialSchoolListInputLb);
                 }
             	
             	if(daRbtn.isSelected()) {

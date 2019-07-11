@@ -50,7 +50,7 @@ class School {
     public int findPriority(String name) {
         int index = -1;
         for(int i=0; i<this.priority.length; i++){
-            if(this.priority[i] == name){
+            if(this.priority[i].equals(name)){
                 index = i;
             }
         }
@@ -66,7 +66,7 @@ class School {
         return true;
     }
 
-    public boolean AIPropose() {
+    public boolean IAPropose() {
         if (this.capacity == this.students.size()) {
             this.proposeList.clear();
             return false;
