@@ -1,4 +1,6 @@
-public final class RefObject<T> {
+package algorithms.assignment.randomSerialDictatorship;
+
+final class RefObject<T> {
     public T argValue;
 
     public RefObject(T refArg) {

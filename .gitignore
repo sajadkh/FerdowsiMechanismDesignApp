@@ -27,3 +27,5 @@ out/
 
 # intelij Files
 .idea/
+src/algorithms/assignment/randomSerialDictatorship/.vscode/launch.json
+.gitignore

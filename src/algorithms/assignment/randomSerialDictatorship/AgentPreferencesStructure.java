@@ -1,6 +1,8 @@
+package algorithms.assignment.randomSerialDictatorship;
+
 import java.util.*;
 
-public final class AgentPreferencesStructure {
+final class AgentPreferencesStructure {
     private int Index;
 
     public int getIndex() {
