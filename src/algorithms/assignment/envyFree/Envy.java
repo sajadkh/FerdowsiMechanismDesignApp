@@ -1,10 +1,16 @@
 package algorithms.assignment.envyFree;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Envy {
 
+    /**
+     * کلاسی برای ذخیریه نتیجه مقایسه هر دو سطر یک ماتریس یا هر دو عامل می باشد
+     * این کلاس دارای متغیرهای agent  و virvalAgent‌ می باشد که به ترتیب نشان دهنده عامل اصلی و عامل مقایسه شده می باشد
+     * نتیجه مقایسه در متغیر Ressult ذخیره می شود که متغیر Result‌ از نوع Status‌ می باشد که در کلاس Status ‌بیشتر مورد بررسی قرار می گیرد
+     */
     private class Result {
         int Agent;
         int virvalAgent;
@@ -17,6 +23,12 @@ public class Envy {
         }
     }
 
+    /**
+     * نوع داده ای برای نگه داری ۳ وضعیت Envy ، Weakly_envy_free ، Envy_free می باشد.
+     * وضعیت Envy که با کد صفر مشخص می شود برای زمانی است که عامل نسبت به عامل‌ های دیگر مغلوب شده باشد.
+     * وضعیت Weakly_envy_free که با کد ۱ مشخص می شود برای زمانی است که عامل حداقل با یک عامل دیگر برابر باشد و نبست به دیگر عامل ها غالب باشد.
+     * وضعیت Envy_free که با کد ۲ مشخص می شود برای زمانی است که عامل نسبت به دیگر عامل ها غالب باشد.
+     */
     private enum Status {
         Envy(0), Envy_free(2), Weakly_envy_free(1);
         private int Value;
@@ -29,6 +41,7 @@ public class Envy {
             return Value;
         }
 
+        // به منظور برگرداندن وضعیت با استفاده از کد وضعیت
         public static Status getStatus(int code) {
             Status status = null;
             for (Status item : values()) {
@@ -41,12 +54,27 @@ public class Envy {
         }
     }
 
+    /**
+     * تنها تابع کلاس Envy می باشد که از خارج کلاس در دسترس می باشد و در واقع تابعی است که مدیریت روال برنامه را بر عهدا دارد.
+     * @param assigmentMatrix ماتریس تخصیص
+     * @param preferMatrix ماتریس ترجیحات
+     *   در مرحله اول تعدادی ماتریس تخصیص مرتب شده براساس ماتریس ترجیحات ایجاد می کند و در sortedMatrixs نگه می دارد.
+     *                     در مرحله دوم سطر های هر ماتریس را با سطر عامل مقایسه کرده و نتایج را در لیستی به نام resultForRows ذخیره می کند.
+     * در مرحله سوم بررسی می کنیم ماتریس تخصیص ارایه شده کدام یک از ۳ وضعیت یاد شده در بالا را داراست. و در متغیر statusForMatrix ذخیره می کند.
+     *
+     *   در نهایت آماده رشته ای با ترتیب خاص برای  بر گرداندن ایجاد می کند.
+     * @return * برگرداندن رشته ای با فرمت خاص
+     */
     public String Execute(double[][] assigmentMatrix, int[][] preferMatrix) {
         StringBuilder outPut = new StringBuilder();
+        //مرحله اول
         List<double[][]> sortedMatrixs = Sort(assigmentMatrix, preferMatrix);
+        //مرحله دوم
         List<Result> resultForRows = Compare(sortedMatrixs);
+        // مرحله سوم
         Status statusForMatrix = CompareMatrix(resultForRows);
 
+        // ایجاد رشته برای خروجی
         outPut.append(Print.PrepareForPrint(assigmentMatrix,preferMatrix,sortedMatrixs,resultForRows,statusForMatrix));
 
 
@@ -54,6 +82,16 @@ public class Envy {
     }
 
     //region Sort
+
+    /**
+     *
+     * @param assigmentMatrix ماتریس تخصیص
+     * @param preferMatrix ماتریس ترجیحات
+     *
+     * @return *
+     * به تعداد سطر های ماتریس ترجیحات تعدادی ماتریس تخصیص مرتب شده براساس ماتریس ترجیحات را بر می گرداند
+     *
+     */
     private List<double[][]> Sort(double[][] assigmentMatrix, int[][] preferMatrix) {
         List<double[][]> sortedMatrixs = new ArrayList<>();
         for (int[] row : preferMatrix) {
@@ -73,6 +111,12 @@ public class Envy {
         return sortedMatrixs;
     }
 
+    /**
+     *
+     * @param rowNumber  تعداد سطر ها ماتریس مورد نظر
+     * @param columnNumber تعداد ستون های ماتریس مورد نظر
+     * @return * ماتریسی با ابعاد مورد نظر و مقدار اولیه صفر ایجاد می کند
+     */
     private double[][] CreateMatrix(int rowNumber , int columnNumber)
     {
         double[][] tempMatrix = new double[rowNumber][];
@@ -86,6 +130,12 @@ public class Envy {
     //endregion
 
     //region Compare
+
+    /**
+     * در این تابع سطرهای هر ماتریس را جدا نموده و به همراه سطر عامل مورد نظر ( که همان سطر با شماره ماتریس می باشد) را برای مشخص شدن وضعیت سطر عامل نسبت به دیگر سطرها را به تابع ()CompareAgents می فرستد و نتیجه را در لیستی از Result به نام result اضافه می کند.
+     * @param sortedMatrixs لیستی از ماتریس مرتب شده
+     * @return *لیت result را برمی گرداند
+     */
     private List<Result> Compare(List<double[][]> sortedMatrixs) {
         List<Result> results = new ArrayList<>();
         for (int agent = 0; agent < sortedMatrixs.size(); agent++) {
@@ -105,6 +155,16 @@ public class Envy {
         return results;
     }
 
+    /**
+     * ابتدا مورد اول هر دو تخصیص را مقایسه می کند :
+     * اگر تخصیص عامل مورد نظر ار تخصیص دیگر بزرگتر بود آنگاه عامل مورد نظر نسبت به عامل دیگر Envy_free‌ می باشد و نتیجه را بر می گردانیم.
+     * اگر تخصیص عامل مورد نظر از تخصیص دیگر کوچکتر بود آنگاه عامل مورد نظر نسبت به عامل دیگر Envy می باشد و نتیجه را بر می گردانیم.
+     * اگر دو تخصیص برابر بود مجموع دو مورد اول را طبق الگوریتم بالا مقایسه می کنیم تا زمانی که در یکی از حالات بالا متوقف شویم یا تا انتهای تخصیص را بررسی کنیم که در حات دوم نتیجه می گیریم دو تخصیص نسبت به هم Weakly_envy_free می باشند و نتیجه را بر کی گردانیم.
+     * @param MainRow تخصیص عامل مورد نظر
+     * @param ComparativeRow عاملی که قرار است با عامل مورد نظر مقایسه شود
+     *
+     * @return * برگرداندن وضعیت دو عامل
+     */
     private Status CompareAgents(double[] MainRow, double[] ComparativeRow) {
         double mainAgent = 0;
         double comparativeAgent = 0;
@@ -132,6 +192,12 @@ public class Envy {
     //endregion
 
     //region CompareMatrix
+
+    /**
+     * در این تابع وضعیت عامل ها را بررسی کرده و وضیعیت با کمترین کد را به عنوان وضعیت ماتریس انتخاب می کنیم که در نوع داده ای Status‌ کد ها را بررسی کردیم
+     * @param resultForRows نتیجه مقایسه سطر ها
+     * @return * وضعیت ماتریس
+     */
     private Status CompareMatrix(List<Result> resultForRows) {
         int minimumState = 10;
         for (Result row : resultForRows) {
@@ -145,6 +211,16 @@ public class Envy {
     }
     //endregion
 
+    /**
+     * در این کلاس صرفا نتیجه نهایی را برای چا آماده می کنیم که به ترتیتب زیر موارد را چاپ می کند
+     * ابتدا ماتریس تخصیص را چا می کند
+     * سپس ماتریس ترجیحات چاپ می شود
+     * سپس به ازای هر ماتریس مرتب شده
+     * ابتدا ماتریس مرتب شده آن  چاپ می شود
+     * سپس وضعیت عامل آن ماتریس نسبت به دیگر عامل ها
+     * در ادامه وضعیت کلی آن عامل چاپ می شود
+     * در انتها وضعیت کلی ماتریس چاپ می شود
+     */
     private static class Print {
         static StringBuilder PrepareForPrint(double[][] assigmentMatrix, int[][] preferMatrix,
                                              List<double[][]> sortedMatrixs, List<Result> resultForRows,
