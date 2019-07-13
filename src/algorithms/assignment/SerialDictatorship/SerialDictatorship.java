@@ -1,4 +1,4 @@
-package algorithms.assignment.SerialDictatorship;
+package algorithms.assignment.serialDictatorship;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,19 +1,19 @@
-package algorithms.assignment.SerialDictatorship;
+package algorithms.assignment.serialDictatorship;
 
 class Obj {
-    private String name;
+    private int name;
     private boolean assigned;
 
-    public Obj(String name) {
+    public Obj(int name) {
         this.name = name;
         this.assigned = false;
     }
 
-    public String getName() {
+    public int getName() {
         return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
@@ -25,8 +25,8 @@ class Obj {
         this.assigned = assigned;
     }
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
+   // @Override
+   // public String toString() {
+    //    return this.name;
+   // }
 }
