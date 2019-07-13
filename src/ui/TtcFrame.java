@@ -1,7 +1,7 @@
 package ui;
 
 
-import algorithms.assignment.schoolChoice.SchoolChoice;
+import algorithms.assignment.ttc.SchoolChoice;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,10 +22,10 @@ public class TtcFrame extends JFrame{
     private JLabel studentPreferenceMatrixInputLb;
     private JTextArea schoolPriorityMatrixInputTx;
     private JLabel schoolPriorityMatrixInputLb;
-    private JTextArea initialSchoolListInputTx;
-    private JLabel initialSchoolListInputLb;
-    private JTextArea initialStudentListInputTx;
-    private JLabel initialStudentListInputLb;
+    private JTextArea initialNumberOfSchoolsInputTx;
+    private JLabel initialNumberOfSchoolsInputLb;
+    private JTextArea initialNumberOfStudentsInputTx;
+    private JLabel initialNumberOfStudentsInputLb;
     private JTextArea initialCapacityInputTx;
     private JLabel initialCapacityInputLb;
 
@@ -44,21 +44,21 @@ public class TtcFrame extends JFrame{
     public TtcFrame(){
         initial();
         setListeners();
-    }    
-    
+    }
+
     private void initial(){
-        
+
         setSize(WIDTH, HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
-        initialSchoolListInputLb = new JLabel("Schools List");
-        initialSchoolListInputLb.setSize(300,20);
-        initialSchoolListInputLb.setLocation(10,20);
+        initialNumberOfSchoolsInputLb = new JLabel("Number Of Schools");
+        initialNumberOfSchoolsInputLb.setSize(300,20);
+        initialNumberOfSchoolsInputLb.setLocation(10,20);
 
-        initialSchoolListInputTx = new JTextArea();
-        initialSchoolListInputTx.setSize(760,30);
-        initialSchoolListInputTx.setLocation(10,50);
+        initialNumberOfSchoolsInputTx = new JTextArea();
+        initialNumberOfSchoolsInputTx.setSize(760,30);
+        initialNumberOfSchoolsInputTx.setLocation(10,50);
 
         initialCapacityInputLb = new JLabel("Schools Capacity");
         initialCapacityInputLb.setSize(300,20);
@@ -68,22 +68,22 @@ public class TtcFrame extends JFrame{
         initialCapacityInputTx.setSize(760,30);
         initialCapacityInputTx.setLocation(10,120);
 
-        initialStudentListInputLb = new JLabel("Students List");
-        initialStudentListInputLb.setSize(300,20);
-        initialStudentListInputLb.setLocation(10,160);
+        initialNumberOfStudentsInputLb = new JLabel("Number Of Students");
+        initialNumberOfStudentsInputLb.setSize(300,20);
+        initialNumberOfStudentsInputLb.setLocation(10,160);
 
-        initialStudentListInputTx = new JTextArea();
-        initialStudentListInputTx.setSize(760,30);
-        initialStudentListInputTx.setLocation(10,190);
+        initialNumberOfStudentsInputTx = new JTextArea();
+        initialNumberOfStudentsInputTx.setSize(760,30);
+        initialNumberOfStudentsInputTx.setLocation(10,190);
 
         studentPreferenceMatrixInputLb = new JLabel("Student Preference Matrix");
         studentPreferenceMatrixInputLb.setSize(300,20);
         studentPreferenceMatrixInputLb.setLocation(10,230);
-        
+
         studentPreferenceMatrixInputTx = new JTextArea();
         studentPreferenceMatrixInputTx.setSize(760,30);
         studentPreferenceMatrixInputTx.setLocation(10,260);
-        
+
         schoolPriorityMatrixInputLb = new JLabel("School Priority Matrix");
         schoolPriorityMatrixInputLb.setSize(300, 20);
         schoolPriorityMatrixInputLb.setLocation(10,300);
@@ -91,22 +91,22 @@ public class TtcFrame extends JFrame{
         schoolPriorityMatrixInputTx = new JTextArea();
         schoolPriorityMatrixInputTx.setSize(760,30);
         schoolPriorityMatrixInputTx.setLocation(10,330);
-           
+
         resultTx= new JTextArea();
         resultPane = new JScrollPane (resultTx,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         resultPane.setSize(760, 250);
         resultPane.setLocation(10,420);
-        
+
         startBtn = new JButton("start");
         startBtn.setSize(120, 30);
         startBtn.setLocation(650,380);
 
-        add(initialSchoolListInputLb);
-        add(initialSchoolListInputTx);
+        add(initialNumberOfSchoolsInputLb);
+        add(initialNumberOfSchoolsInputTx);
         add(initialCapacityInputLb);
         add(initialCapacityInputTx);
-        add(initialStudentListInputLb);
-        add(initialStudentListInputTx);
+        add(initialNumberOfStudentsInputLb);
+        add(initialNumberOfStudentsInputTx);
         add(studentPreferenceMatrixInputTx);
         add(studentPreferenceMatrixInputLb);
         add(schoolPriorityMatrixInputTx);
@@ -115,43 +115,41 @@ public class TtcFrame extends JFrame{
         add(startBtn);
 
     }
-    
+
     private void setListeners(){
-        
+
         startBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String [][] studentPreferenceMatrix = parseToMatrix(studentPreferenceMatrixInputTx.getText().toString());
-                String [][] schoolsPriorityMatrix = parseToMatrix(schoolPriorityMatrixInputTx.getText().toString());
+                int [][] studentPreferenceMatrix = parseToIntMatrix(studentPreferenceMatrixInputTx.getText().toString());
+                int [][] schoolsPriorityMatrix = parseToIntMatrix(schoolPriorityMatrixInputTx.getText().toString());
                 int [][] schoolsCapacity = parseToIntMatrix(initialCapacityInputTx.getText().toString());
-                String [][] schoolsList = parseToMatrix(initialSchoolListInputTx.getText().toString());
-                String [][] studentsList = parseToMatrix(initialStudentListInputTx.getText().toString());
-                if(studentPreferenceMatrix == null || studentPreferenceMatrix.length > studentsList[0].length || schoolsPriorityMatrix == null
-                        || schoolsList == null || schoolsList.length > 1 || studentsList == null || studentsList.length > 1
-                        || schoolsPriorityMatrix.length > schoolsList[0].length || schoolsCapacity == null || schoolsCapacity.length > 1) {
+                int NumberOfSchools =Integer.parseInt(initialNumberOfSchoolsInputTx.getText().toString());
+                int NumberOfStudents = Integer.parseInt(initialNumberOfStudentsInputTx.getText().toString());
+                if(studentPreferenceMatrix == null || studentPreferenceMatrix.length > NumberOfStudents || schoolsPriorityMatrix == null
+                        || NumberOfSchools < 1 || NumberOfStudents < 1
+                        || schoolsPriorityMatrix.length > NumberOfSchools || schoolsCapacity == null || schoolsCapacity.length < 1) {
                     appendResult("wrong input");
                     return;
                 }
                 appendResult("\nassignment matrix: \n");
-                SchoolChoice sc = new SchoolChoice(studentsList[0], schoolsList[0], schoolsCapacity[0],
-                        studentPreferenceMatrix, schoolsPriorityMatrix);
-                List<List<String>> assignmentMatrix = sc.AI();
-                for (int i = 0; i < assignmentMatrix.size(); i++) {
-                    for (int j = 0; j < assignmentMatrix.get(0).size(); j++) {
-                        appendResult(assignmentMatrix.get(i).get(j) + "  ");
-                    }
-                    appendResult("\n");
+                SchoolChoice s = new SchoolChoice();
+                int[] assignmentMatrix = s.Ttcmmech(NumberOfStudents,NumberOfSchools,studentPreferenceMatrix,schoolsPriorityMatrix,schoolsCapacity[0]);
+                for (int i = 1; i < assignmentMatrix.length+1; i++) {
+
+                    appendResult("student["+(i)+"]= "+assignmentMatrix[i-1] + "\n");
+
                 }
             }
-        });          
+        });
     }
-    
+
     private String [][] parseToMatrix(String inputStr) {
-    	
+
     	try{
     		ArrayList<String> rowStrList = new ArrayList<>();
             Pattern pattern = Pattern.compile("\\{[^\\}]{1,}\\}");
-            Matcher matcher = pattern.matcher(inputStr);            
+            Matcher matcher = pattern.matcher(inputStr);
             while(matcher.find()) {
             	String str = matcher.group();
             	rowStrList.add(str);
@@ -165,11 +163,11 @@ public class TtcFrame extends JFrame{
             		preferenceMatrix [i][j] = rowSplit[j];
             	}
             }
-            return preferenceMatrix;           
+            return preferenceMatrix;
         }catch(Exception e){
             e.printStackTrace();
         }
-    	
+
     	return null;
     }
 
@@ -203,5 +201,5 @@ public class TtcFrame extends JFrame{
     private void appendResult(String result) {
     	resultTx.setText(resultTx.getText().toString()+result);
     }
- 
+
 }
