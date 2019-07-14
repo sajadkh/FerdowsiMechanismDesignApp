@@ -56,7 +56,7 @@ public class TtcFrame extends JFrame{
         initialNumberOfSchoolsInputLb.setSize(300,20);
         initialNumberOfSchoolsInputLb.setLocation(10,20);
 
-        initialNumberOfSchoolsInputTx = new JTextArea();
+        initialNumberOfSchoolsInputTx = new JTextArea("3");
         initialNumberOfSchoolsInputTx.setSize(760,30);
         initialNumberOfSchoolsInputTx.setLocation(10,50);
 
@@ -64,7 +64,7 @@ public class TtcFrame extends JFrame{
         initialCapacityInputLb.setSize(300,20);
         initialCapacityInputLb.setLocation(10,90);
 
-        initialCapacityInputTx = new JTextArea();
+        initialCapacityInputTx = new JTextArea("{2,2,2}");
         initialCapacityInputTx.setSize(760,30);
         initialCapacityInputTx.setLocation(10,120);
 
@@ -72,7 +72,7 @@ public class TtcFrame extends JFrame{
         initialNumberOfStudentsInputLb.setSize(300,20);
         initialNumberOfStudentsInputLb.setLocation(10,160);
 
-        initialNumberOfStudentsInputTx = new JTextArea();
+        initialNumberOfStudentsInputTx = new JTextArea("5");
         initialNumberOfStudentsInputTx.setSize(760,30);
         initialNumberOfStudentsInputTx.setLocation(10,190);
 
@@ -80,7 +80,7 @@ public class TtcFrame extends JFrame{
         studentPreferenceMatrixInputLb.setSize(300,20);
         studentPreferenceMatrixInputLb.setLocation(10,230);
 
-        studentPreferenceMatrixInputTx = new JTextArea();
+        studentPreferenceMatrixInputTx = new JTextArea("{{1,2,3},{1,2,3},{1,2,3},{2,1,3},{2,1,3}}");
         studentPreferenceMatrixInputTx.setSize(760,30);
         studentPreferenceMatrixInputTx.setLocation(10,260);
 
@@ -88,7 +88,7 @@ public class TtcFrame extends JFrame{
         schoolPriorityMatrixInputLb.setSize(300, 20);
         schoolPriorityMatrixInputLb.setLocation(10,300);
 
-        schoolPriorityMatrixInputTx = new JTextArea();
+        schoolPriorityMatrixInputTx = new JTextArea("{{1,4,2,3,5},{5,2,3,4,1},{1,2,3,4,5}}");
         schoolPriorityMatrixInputTx.setSize(760,30);
         schoolPriorityMatrixInputTx.setLocation(10,330);
 

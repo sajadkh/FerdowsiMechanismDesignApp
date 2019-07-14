@@ -53,7 +53,7 @@ public class IaFrame extends JFrame{
         initialSchoolListInputLb.setSize(300,20);
         initialSchoolListInputLb.setLocation(10,20);
 
-        initialSchoolListInputTx = new JTextArea();
+        initialSchoolListInputTx = new JTextArea("{s1,s2}");
         initialSchoolListInputTx.setSize(760,30);
         initialSchoolListInputTx.setLocation(10,50);
 
@@ -61,7 +61,7 @@ public class IaFrame extends JFrame{
         initialCapacityInputLb.setSize(300,20);
         initialCapacityInputLb.setLocation(10,90);
 
-        initialCapacityInputTx = new JTextArea();
+        initialCapacityInputTx = new JTextArea("{1,2}");
         initialCapacityInputTx.setSize(760,30);
         initialCapacityInputTx.setLocation(10,120);
 
@@ -69,7 +69,7 @@ public class IaFrame extends JFrame{
         initialStudentListInputLb.setSize(300,20);
         initialStudentListInputLb.setLocation(10,160);
 
-        initialStudentListInputTx = new JTextArea();
+        initialStudentListInputTx = new JTextArea("{t1,t2}");
         initialStudentListInputTx.setSize(760,30);
         initialStudentListInputTx.setLocation(10,190);
 
@@ -77,7 +77,7 @@ public class IaFrame extends JFrame{
         studentPreferenceMatrixInputLb.setSize(300,20);
         studentPreferenceMatrixInputLb.setLocation(10,230);
         
-        studentPreferenceMatrixInputTx = new JTextArea();
+        studentPreferenceMatrixInputTx = new JTextArea("{{s1,s2},{s1,s2}}");
         studentPreferenceMatrixInputTx.setSize(760,30);
         studentPreferenceMatrixInputTx.setLocation(10,260);
         
@@ -85,7 +85,7 @@ public class IaFrame extends JFrame{
         schoolPriorityMatrixInputLb.setSize(300, 20);
         schoolPriorityMatrixInputLb.setLocation(10,300);
 
-        schoolPriorityMatrixInputTx = new JTextArea();
+        schoolPriorityMatrixInputTx = new JTextArea("{{t1,t2},{t1,t2}}");
         schoolPriorityMatrixInputTx.setSize(760,30);
         schoolPriorityMatrixInputTx.setLocation(10,330);
            
@@ -154,7 +154,7 @@ public class IaFrame extends JFrame{
                 }
                 for (int i = 0; i < assignmentMatrix.size(); i++) {
                     for (int j = 0; j < assignmentMatrix.get(0).size(); j++) {
-                        appendResult(assignmentMatrix.get(i).get(j) + "  ");
+                        appendResult(schoolsList[0][i] + " ---> " + assignmentMatrix.get(i).get(j) + "  ");
                     }
                     appendResult("\n");
                 }

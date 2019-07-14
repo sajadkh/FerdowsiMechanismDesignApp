@@ -20,5 +20,5 @@ for example
 and for 2D Arrays please enter each row between {}   
 for example    
 ```
-[[1,2,3],[4,5,6]] = {1,2,3},{4,5,6}
+[[1,2,3],[4,5,6]] = {{1,2,3},{4,5,6}}
 ```
