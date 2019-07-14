@@ -68,6 +68,7 @@ public class MainFrame extends JFrame{
         add(daBtn);
         add(sdBtn);
         add(rsdBtn);
+        add(ttcBtn);
         add(envyFreeBtn);
     }
 
