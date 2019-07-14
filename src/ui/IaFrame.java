@@ -100,11 +100,11 @@ public class IaFrame extends JFrame{
 
         iaRbtn = new JRadioButton("IA");
         iaRbtn.setSize(50, 20);
-        iaRbtn.setLocation(650, 10);
+        iaRbtn.setLocation(10, 380);
 
         daRbtn = new JRadioButton("DA");
         daRbtn.setSize(50, 20);
-        daRbtn.setLocation(650, 70);
+        daRbtn.setLocation(70, 380);
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(iaRbtn);
         buttonGroup.add(daRbtn);

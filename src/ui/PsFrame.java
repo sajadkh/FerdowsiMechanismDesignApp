@@ -47,13 +47,6 @@ public class PsFrame extends JFrame{
     private JTextArea resultTx;
     private JScrollPane resultPane;   
     private JButton startBtn;
-    
-    private JRadioButton psRbtn;
-    private JRadioButton iaRbtn;
-    private JRadioButton daRbtn;
-    private JRadioButton ttcRbtn;
-    private JRadioButton sdRbtn;
-    private JRadioButton rsdRbtn;
 
     
     public PsFrame(){
@@ -107,35 +100,18 @@ public class PsFrame extends JFrame{
         startBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(iaRbtn.isSelected()) {
-                    int[][] preferenceMatrix = parseToIntMatrix(preferenceMatrixInputTx.getText().toString());
-                    if (preferenceMatrix == null) {
-                        appendResult("wrong input");
-                        return;
-                    }
-                    appendResult("\nassignment matrix: \n");
-                    double[][] assignmentMatrix = PsAlgorithm.doPS(preferenceMatrix);
-                    for (int i = 0; i < assignmentMatrix.length; i++) {
-                        for (int j = 0; j < assignmentMatrix[0].length; j++) {
-                            appendResult(assignmentMatrix[i][j] + "  ");
-                        }
-                        appendResult("\n");
-                    }
+                int[][] preferenceMatrix = parseToIntMatrix(preferenceMatrixInputTx.getText().toString());
+                if (preferenceMatrix == null) {
+                    appendResult("wrong input");
+                    return;
                 }
-                else if(daRbtn.isSelected()){
-                    int[][] preferenceMatrix = parseToIntMatrix(preferenceMatrixInputTx.getText().toString());
-                    if (preferenceMatrix == null) {
-                        appendResult("wrong input");
-                        return;
+                appendResult("\nassignment matrix: \n");
+                double[][] assignmentMatrix = PsAlgorithm.doPS(preferenceMatrix);
+                for (int i = 0; i < assignmentMatrix.length; i++) {
+                    for (int j = 0; j < assignmentMatrix[0].length; j++) {
+                        appendResult(assignmentMatrix[i][j] + "  ");
                     }
-                    appendResult("\nassignment matrix: \n");
-                    double[][] assignmentMatrix = PsAlgorithm.doPS(preferenceMatrix);
-                    for (int i = 0; i < assignmentMatrix.length; i++) {
-                        for (int j = 0; j < assignmentMatrix[0].length; j++) {
-                            appendResult(assignmentMatrix[i][j] + "  ");
-                        }
-                        appendResult("\n");
-                    }
+                    appendResult("\n");
                 }
             }
         });          

@@ -43,29 +43,29 @@ public class MainFrame extends JFrame{
         iaBtn.setSize(100, 40);
         iaBtn.setLocation(90,100);
 
-        daBtn = new JButton("DA");
-        daBtn.setSize(100, 40);
-        daBtn.setLocation(90,150);
+//        daBtn = new JButton("DA");
+//        daBtn.setSize(100, 40);
+//        daBtn.setLocation(90,150);
 
         sdBtn = new JButton("SD");
         sdBtn.setSize(100, 40);
-        sdBtn.setLocation(90,200);
+        sdBtn.setLocation(90,150);
 
         rsdBtn = new JButton("RSD");
         rsdBtn.setSize(100, 40);
-        rsdBtn.setLocation(90,250);
+        rsdBtn.setLocation(90,200);
 
         ttcBtn = new JButton("TTC");
         ttcBtn.setSize(100, 40);
-        ttcBtn.setLocation(90,300);
+        ttcBtn.setLocation(90,250);
 
         envyFreeBtn = new JButton("EnvyFree");
         envyFreeBtn.setSize(100, 40);
-        envyFreeBtn.setLocation(90,350);
+        envyFreeBtn.setLocation(90,300);
 
         add(psBtn);
         add(iaBtn);
-        add(daBtn);
+//        add(daBtn);
         add(sdBtn);
         add(rsdBtn);
         add(ttcBtn);

@@ -1,4 +1,4 @@
-package ttc;
+package algorithms.assignment.ttc;
 
 
 public class Student {            
