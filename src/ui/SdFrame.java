@@ -1,14 +1,10 @@
 package ui;
 
-
-
 //import algorithms.assignment.serialDictatorship.Agent;
 //import algorithms.assignment.serialDictatorship.Obj;
 //import algorithms.assignment.serialDictatorship.SerialDictatorship;
 //import algorithms.assignment.serialDictatorship.Obj;
 //import algorithms.assignment.serialDictatorship.Agent;
-
-
 
 
 import javax.swing.*;
@@ -136,7 +132,6 @@ public class SdFrame extends JFrame{
                     
                     for (int i=0; i < agentPreferenceMatrix.length; i++)
                         for (int j=0; j < agentPreferenceMatrix[0].length; j++) {
-                            //agentPreferences[i][j] = objs[i]; 
                         	for(int k=0; k < objectsList[0].length;k++) {
                             if (agentPreferenceMatrix[i][j].equals(objs[k].getName())) {
                             	agentPreferences[i][j]=objs[k];
@@ -341,26 +336,6 @@ public class SdFrame extends JFrame{
           return result;
       }
 
-      // public static void main(String[] args) {
-      //     Obj obj1 = new Obj("obj1");
-      //     Obj obj2 = new Obj("obj2");
-      //     Obj obj3 = new Obj("obj3");
-      //     Obj obj4 = new Obj("obj4");
-
-
-      //     String[] agents = {"agentB", "agentA"};
-      //     Obj[] objs = {obj1, obj2, obj3, obj4};
-      //     Obj[][] agentPreferences = {
-      //         {obj2, obj3, obj4, obj1},
-      //         {obj1, obj3, obj4, obj2}
-      //     };
-
-      //     SerialDictatorship sd = new SerialDictatorship(agents, objs, agentPreferences);
-      //     System.out.println(sd.SD());
-      // }
+     
   }
-  
-  
-
-    
 }
