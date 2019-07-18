@@ -15,9 +15,9 @@ public class MainFrame extends JFrame{
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
 
-    private JButton iaBtn;
+    private JButton scBtn;
     private JButton psBtn;
-    private JButton daBtn;
+//    private JButton daBtn;
     private JButton sdBtn;
     private JButton rsdBtn;
     private JButton envyFreeBtn;
@@ -39,9 +39,9 @@ public class MainFrame extends JFrame{
         psBtn.setSize(100, 40);
         psBtn.setLocation(90,50);
 
-        iaBtn = new JButton("AI");
-        iaBtn.setSize(100, 40);
-        iaBtn.setLocation(90,100);
+        scBtn = new JButton("SC");
+        scBtn.setSize(100, 40);
+        scBtn.setLocation(90,100);
 
 //        daBtn = new JButton("DA");
 //        daBtn.setSize(100, 40);
@@ -64,7 +64,7 @@ public class MainFrame extends JFrame{
         envyFreeBtn.setLocation(90,300);
 
         add(psBtn);
-        add(iaBtn);
+        add(scBtn);
 //        add(daBtn);
         add(sdBtn);
         add(rsdBtn);
@@ -82,11 +82,11 @@ public class MainFrame extends JFrame{
             }
         });
 
-        iaBtn.addActionListener(new ActionListener() {
+        scBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("iaBtn");
-                new IaFrame().setVisible(true);
+                new SchoolChoiceFrame().setVisible(true);
             }
         });
 
