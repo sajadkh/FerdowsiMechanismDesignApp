@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 //import javax.swing.JOptionPane;
 
-public class IaFrame extends JFrame{
+public class SchoolChoiceFrame extends JFrame{
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 1000;
@@ -38,7 +38,7 @@ public class IaFrame extends JFrame{
     private JRadioButton daRbtn;
 
 
-    public IaFrame(){
+    public SchoolChoiceFrame(){
         initial();
         setListeners();
     }    
